@@ -79,6 +79,9 @@ namespace Infrastructure
                 Value = repo.RepositoryUri
             });
 
+            // Part 6 - ECS Cluster
+            
+
 
         }
     }
