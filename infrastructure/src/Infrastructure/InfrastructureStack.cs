@@ -10,6 +10,7 @@ using Amazon.CDK.AWS.DirectoryService;
 using Amazon.CDK.AWS.SSM;
 using Amazon.CDK.AWS.SecretsManager;
 using Amazon.CDK.AWS.FSx;
+using Amazon.CDK.AWS.ECR;
 using static Amazon.CDK.AWS.DirectoryService.CfnMicrosoftAD;
 
 namespace Infrastructure
@@ -67,8 +68,17 @@ namespace Infrastructure
                 },
             });
 
-            // Part 5 ECS Cluster
-            
+            // Part 5 ECR Repository
+            var repo = new Repository(this, "apprepo", new RepositoryProps{
+                RepositoryName = "containerizedapp",
+                RemovalPolicy = RemovalPolicy.RETAIN
+            });
+            new CfnOutput(this, "repo", new CfnOutputProps{
+                ExportName = "repooutput",
+                Description = "Application Container Repository URI",
+                Value = repo.RepositoryUri
+            });
+
 
         }
     }
