@@ -11,6 +11,7 @@ using Amazon.CDK.AWS.SSM;
 using Amazon.CDK.AWS.SecretsManager;
 using Amazon.CDK.AWS.FSx;
 using Amazon.CDK.AWS.ECR;
+using Amazon.CDK.AWS.ECS;
 using static Amazon.CDK.AWS.DirectoryService.CfnMicrosoftAD;
 
 namespace Infrastructure
@@ -79,8 +80,16 @@ namespace Infrastructure
                 Value = repo.RepositoryUri
             });
 
-            // Part 6 - ECS Cluster
-            
+            // // Part 6 - ECS Cluster
+            // var cluster = new Cluster(this, "wincontainercluster", new ClusterProps{
+            //     Capacity = new AddCapacityOptions{
+            //         DesiredCapacity = 3,
+            //         VpcSubnets = new SubnetSelection
+            //         {
+            //             Subnets = 
+            //         }
+            //     }
+            // });
 
 
         }
